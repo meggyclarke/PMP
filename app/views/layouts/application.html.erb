@@ -9,6 +9,22 @@
   </head>
 
   <body>
+    <nav class="navbar-default">
+      <div class="container">
+        <div class="navbar-header">
+          <%= link_to "My Points", home_path, class: "navbar-brand" %>
+        </div>
+        <ul class="navbar-nav">
+          <li> <%= link_to "SIGN UP" new_user_registration_path %> </li>
+          <li> <%= link_to "LOGIN" user_registration_path %> </li>
+          <% if user_signed_in? %>
+            <li> <%= link_to "NEW POINT TYPE" _path %> </li>
+            <li> <%= link_to "ADD POINTS" _path %> </li>
+            <li> <%= link_to "LOG OUT" _path %> </li>
+          <% end %>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+
     <%= yield %>
   </body>
 </html>
