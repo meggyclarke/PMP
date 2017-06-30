@@ -1,0 +1,20 @@
+<% if !current_user.points %>
+  redirect_to new_user_point_path(current_user)
+<% end %>
+
+  <h1>points index page </h1>
+  <%= @my_points.length%>
+
+  <% @my_points.each do |result|%>
+    <div class="point_wrapper">
+      <div class="point_details">
+        <h1><%= result.current_user.point_ids.program_id.company %></h1>
+        </br>
+        <h2> <%= result.current_user.point_ids.program_id.pointsRedeemValue %> </h2>
+        </br>
+        <h3>You have <%= result.current_user.point_ids.pointsNum %> points! </h3>
+        </br>
+        Update Points for <%= link_to "Update Points", edit_user_point_path(result.current_user.point_ids.program_id) %>
+      </div>
+    </div>
+  <% end %>

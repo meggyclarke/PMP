@@ -1,0 +1,17 @@
+<div class="pointType_wrapper">
+  <div class="create_pointType">
+    <h1>Add a points program </h1>
+    <% @my_point = Point.new%>
+    <%= form_for @my_point, url: user_points_path do |f| %>
+      <% f.label :program_id %>
+      <!-- add a drop down menu -->
+    <%= f.collection_select :id, Program.order(:company), :id, :company, {class: "dropdown-menu"} %>
+    <%f.label :pointsNum %>
+    <%= f.number_field :pointsNum, placeholder: "Enter Number here" %>
+    <%= f.hidden_field :user_id, value: current_user.id %>
+      <div class="pointType_submit">
+        <%= f.submit "Add Point Program"%>
+      </div>
+    <% end %>
+  </div>
+</div>

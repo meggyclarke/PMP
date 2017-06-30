@@ -5,3 +5,17 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+### Developer Notes: As the pointsRedeemValue is conditional these are written as turnery operations nested in turnery operations with commented notes to make them easier to read.
+
+Program.create(
+  company: 'Presidents Choice',
+  pointsValue: '1000',
+  pointsRedeemValue: @pcPoints
+)
+
+Program.create(
+  company: 'Indigo',
+  pointsValue: '500',
+  pointsRedeemValue: @indigoPoints
+)
