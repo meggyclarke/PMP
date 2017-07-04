@@ -5,7 +5,9 @@ class PointsController < ApplicationController
 
   def index
     @user = current_user
-    @my_points = current_user.point_ids
+    @my_points = current_user.points
+    @programs = Program.all
+
 
   end
 
@@ -20,7 +22,8 @@ class PointsController < ApplicationController
     @user = current_user
     @my_point = Point.new(point_params)
     @programs = Program.all
-    @my_programs = Program.where(program_id = current_user.point_ids.program_id)
+    # @my_programs = Program.where(program_id = current_user.point_ids.program_id)
+    # @program = program_id
 
     if @my_point.save
       redirect_to user_points_path
@@ -31,22 +34,28 @@ class PointsController < ApplicationController
 
   def show
     @user = current_user
-    @my_points = current_user.point_ids
-    @my_point = Point.where(user_id = current_user.id && point.id = current_user.point_id)
+    @my_points = current_user.points
     @programs = Program.all
-    @my_programs = Program.where(program_id = current_user.point_id.program_id)
+
   end
 
   def edit
     @user = current_user
-    @my_point = Point.where(user_id = current_user.id && point.id = current_user.point_id)
-    @my_programs = Program.where(program_id = current_user.point_id.program_id)
+    @point = params[:id]
+    @my_points = current_user.points
+    @my_point = @my_points.where(id = @point)
+    # if @point.update(point_params)
+    #   redirect_to user_points_path
+    # end
+
   end
 
 private
 
 def point_params
-  params.require(:point).permit(:user_id, :program_id)
+  params.require(:point).permit(:program_id, :user_id, :pointsNum)
+
+
 end
 
 def find_my_points
