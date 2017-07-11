@@ -7,9 +7,9 @@
   <% @my_points.each do |result|%>
     <div class="point_wrapper">
       <div class="point_details">
-        <h1><%= @programs[result.program_id].company %></h1>
+        <h1><%= @programs[result.program_id - 1 ].company %></h1>
         </br>
-        <h2> <%= @programs[result.program_id].pointsRedeemValue %> </h2>
+        <h2> <%= @programs[result.program_id - 1 ].pointsRedeemValue %> </h2>
         </br>
         <h3>You have <%= result.pointsNum %> points! </h3>
         </br>

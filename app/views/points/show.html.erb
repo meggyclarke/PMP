@@ -1,1 +1,21 @@
 <h1>points show page </h1>
+
+<% if !current_user.points %>
+  redirect_to new_user_point_path(current_user)
+<% end %>
+
+  <h1>Your Points</h1>
+
+  <% @my_points.each do |result|%>
+    <div class="point_wrapper">
+      <div class="point_details">
+        <h1><%= @programs[result.program_id - 1].company %></h1>
+        </br>
+        <h2> <%= @programs[result.program_id - 1].pointsRedeemValue %> </h2>
+        </br>
+        <h3>You have <%= result.pointsNum %> points! </h3>
+        </br>
+        Update Points for <%= link_to "Update Points", edit_user_point_path(@user, result.id) %>
+      </div>
+    </div>
+  <% end %>

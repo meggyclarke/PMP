@@ -36,6 +36,8 @@ class PointsController < ApplicationController
     @user = current_user
     @my_points = current_user.points
     @programs = Program.all
+    # @program = params[:program_id]
+    # @program_id = Program.where(id = @program)
 
   end
 
